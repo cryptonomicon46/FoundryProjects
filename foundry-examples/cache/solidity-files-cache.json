@@ -878,8 +878,8 @@
       }
     },
     "script/Counter.s.sol": {
-      "lastModificationDate": 1677079785488,
-      "contentHash": "20c28c42118c69cb5049c49611a2c6e6",
+      "lastModificationDate": 1677136793423,
+      "contentHash": "f49ef1444079e3cc7c2c19078f780b7d",
       "sourceName": "script/Counter.s.sol",
       "solcConfig": {
         "settings": {

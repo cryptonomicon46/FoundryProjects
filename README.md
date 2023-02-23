@@ -44,3 +44,18 @@ forge install transmissions11/solmate Openzeppelin/openzeppelin-contracts --no-g
 This will install openzeppelin-contracts
 
 forge script script/NFT.s.sol:NFTScript --fork-url $RPC_MAINNET --private-key $PRIVATE_KEY --broadcast
+
+forge test --match-path test/NFT.t.sol --match-contract NFTTest --match-test "test\*"
+
+Deploy NFT to anvil
+forge script script/NFT.s.sol:NFTScript --fork-url http://localhost:8545 --private-key $PRIV_KEY //Simulation
+forge script script/NFT.s.sol:NFTScript \
+--fork-url http://localhost:8545 \
+--private-key $PRIV_KEY --broadcast
+
+forge create src/Counter.sol:Counter \
+ --private-key=$PRIV_KEY \
+
+forge create src/NFT.sol:NFT --rpc-url="http://localhost:8545" \
+--private-key=$PRIV_KEY \
+--constructor-args "SupeRareV2" "SUPV2"
