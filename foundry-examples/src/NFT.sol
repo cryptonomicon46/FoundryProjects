@@ -12,12 +12,17 @@ contract NFT is ERC721 {
         string memory _symbol
     ) ERC721(_name, _symbol) {}
 
-    function mintTo(address recipient) public payable returns (uint256) {
+    function mintTo(address recipient) public payable returns (bool) {
         uint256 newItemId = ++currentTokenId;
         _safeMint(recipient, newItemId);
-        return newItemId;
+        return true;
     }
 
+    function burn(uint256 tokenId) public payable returns (bool) {
+        require(msg.sender == ERC721.ownerOf(tokenId),"NFT:UNAUTHORIZED_TO_BURN");
+        _burn(tokenId);
+        return true;
+    }
     function tokenURI(uint256 id) public view virtual override returns (string memory) {
         return Strings.toString(id);
     }

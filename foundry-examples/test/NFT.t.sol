@@ -30,11 +30,34 @@ contract NFTTest is Test {
     }
 
     function testTransferToken() public {
-        vm.prank(bob);
-        nft.transferFrom(bob,alice,1);
+        vm.startPrank(bob);
+        nft.safeTransferFrom(bob,alice,1);
         assertEq(nft.balanceOf(alice),2);
         assertEq(nft.ownerOf(1),alice);
 
+    }
+
+    function testGetBalance() public {
+        nft.mintTo(bob);
+        nft.mintTo(bob);
+        nft.mintTo(bob);
+        nft.mintTo(bob);
+
+        assertEq(nft.balanceOf(bob),5);
+    }
+
+    function testOwnerCanBurnToken() public {
+        console2.log(nft.balanceOf(bob));
+        vm.prank(bob);
+        nft.burn(1);
+        assertEq(nft.balanceOf(bob),0);
+        vm.expectRevert("NFT:UNAUTHORIZED_TO_BURN");
+        nft.burn(2);
+
+        vm.startPrank(alice);
+        nft.burn(2);
+        assertEq(nft.balanceOf(alice),0);
+        emit log_named_uint("Alice's Balance is", nft.balanceOf(alice));
     }
 
     
