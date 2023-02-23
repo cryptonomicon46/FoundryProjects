@@ -53,9 +53,21 @@ forge script script/NFT.s.sol:NFTScript \
 --fork-url http://localhost:8545 \
 --private-key $PRIV_KEY --broadcast
 
+//\***\*\*\*\*** ISSUE **\*\*\*\***\*\*\*\***\*\*\*\***/
 forge create src/Counter.sol:Counter \
  --private-key=$PRIV_KEY \
 
+This deploy script to anvil doesn't work.
 forge create src/NFT.sol:NFT --rpc-url="http://localhost:8545" \
 --private-key=$PRIV_KEY \
 --constructor-args "SupeRareV2" "SUPV2"
+
+OUTPUT:
+(base) $ forge create src/NFT.sol:NFT --rpc-url="http://localhost:8545" \
+--private-key=$PRIV_KEY \
+--constructor-args "SupeRareV2" "SUPV2"
+
+[⠆] Compiling...
+No files changed, compilation skipped
+Error:
+Contract was not deployed
