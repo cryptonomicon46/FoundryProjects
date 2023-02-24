@@ -2,16 +2,20 @@
 
 ERC721, ERC20 , EIP712 etc
 
+```bash
 curl -L https://foundry.paradigm.xyz | bash
 foundryup
 
 forge init foundry-examples --no-git
+```
 
 Solidity extentions, change location of 'src' and 'lib'
 
+```bash
 forge build
 
 forge test
+```
 
 Split terminal and launch local node using 'anvil
 anvil
